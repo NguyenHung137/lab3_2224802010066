@@ -3,11 +3,11 @@ import 'screens/splash_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/detail_screen.dart';
 import 'screens/favorites_screen.dart';
+import 'screens/search_screen.dart';
+import 'screens/profile_screen.dart';
 import 'models/movie.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -15,27 +15,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Movie App',
+      title: 'CineVault – 2224802010066',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF1A1A2E),
+          seedColor: const Color(0xFFE94560),
           brightness: Brightness.dark,
         ),
         useMaterial3: true,
-        fontFamily: 'Roboto',
       ),
-
-      // ✅ NAMED ROUTES
       initialRoute: '/splash',
       routes: {
-        '/splash':     (context) => const SplashScreen(),
-        '/home':       (context) => const HomeScreen(),
-        '/favorites':  (context) => const FavoritesScreen(),
-        // Detail dùng onGenerateRoute vì cần truyền data
+        '/splash':    (context) => const SplashScreen(),
+        '/home':      (context) => const HomeScreen(),
+        '/favorites': (context) => const FavoritesScreen(),
+        '/search':    (context) => const SearchScreen(),
+        '/profile':   (context) => const ProfileScreen(),
       },
-
-      // ✅ onGenerateRoute để truyền dữ liệu qua Named Route
       onGenerateRoute: (settings) {
         if (settings.name == '/detail') {
           final movie = settings.arguments as Movie;
